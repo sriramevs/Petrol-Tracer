@@ -57,6 +57,27 @@
 
       document.getElementById("mileageResult").innerText =
         `You can travel approx. ${predictedKM} KM more.\nExpected KM after usage: ${finalKM}`;
+
+      // Send data to Google Apps Script
+      const mileageResult = `You can travel approx. ${predictedKM} KM more.\nExpected KM after usage: ${finalKM}`;
+      const url = 'https://script.google.com/macros/s/AKfycbxDoYjPZI0FTBxsz5bhgDgc6rzFVKfiTsWmD8dplL_xvl0TQFhHXNcLcrzYajygXmFB/exec'; // Replace with your deployed Google Apps Script web app URL
+
+      fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({
+          currentKM: currentKM,
+          petrolLitres: petrolLitres,
+          mileageResult: mileageResult
+        })
+      })
+      .then(response => response.text())
+      .then(data => {
+        console.log('Success:', data);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
     }
   </script>
 </body>
