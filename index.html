@@ -31,13 +31,13 @@
 </head>
 <body>
   <h1>Petrol Maintenance Tracker</h1>
-  <label for="currentKM">Enter Current KM:</label>
+  <label for="currentKM">Enter Odometer (KM):</label>
   <input type="number" id="currentKM" placeholder="e.g., 10500" />
 
   <label for="petrolLitres">Petrol Filled (in Litres):</label>
   <input type="number" id="petrolLitres" placeholder="e.g., 5" />
 
-  <button onclick="calculateMileage()">Predict Mileage</button>
+  <button onclick="calculateMileage()">Log Entry</button>
 
   <div class="result" id="mileageResult"></div>
 
@@ -58,8 +58,7 @@
       document.getElementById("mileageResult").innerText =
         `Predicted Range: ${predictedKM} KM\nExpected Odometer: ${overallKM} KM`;
 
-      // Push data to Google Apps Script
-      const url = 'https://script.google.com/macros/s/AKfycby30h875IMvbivQL6K_5wru9sKrAns0EtNzp2BfgwOwqFWLNjdLh22WZVqGcQk73Izwrw/exec'; // Replace this with your actual web app URL
+      const url = 'https://script.google.com/macros/s/AKfycbzsok2FgiLeWw83NwHZDRZy-H8vVY1WHkcFR9uyk_-k5JLWVKMIblzR9w2SmVTMbxM05Q/exec'; // Replace with your deployed web app URL
 
       fetch(url, {
         method: 'POST',
