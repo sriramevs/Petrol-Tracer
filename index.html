@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Petrol Maintenance Tracker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 500px;
+      margin: 50px auto;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      font-size: 16px;
+    }
+    .result {
+      font-weight: bold;
+      font-size: 18px;
+      text-align: center;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Petrol Maintenance Tracker</h1>
+  <label for="currentKM">Enter Current KM:</label>
+  <input type="number" id="currentKM" placeholder="e.g., 10500" />
+
+  <label for="petrolLitres">Petrol Filled (in Litres):</label>
+  <input type="number" id="petrolLitres" placeholder="e.g., 5" />
+
+  <button onclick="calculateMileage()">Predict Mileage</button>
+
+  <div class="result" id="mileageResult"></div>
+
+  <script>
+    function calculateMileage() {
+      const currentKM = parseFloat(document.getElementById("currentKM").value);
+      const petrolLitres = parseFloat(document.getElementById("petrolLitres").value);
+      const mileagePerLitre = 40;
+
+      if (isNaN(currentKM) || isNaN(petrolLitres)) {
+        document.getElementById("mileageResult").innerText = "Please enter valid values.";
+        return;
+      }
+
+      const predictedKM = petrolLitres * mileagePerLitre;
+      const finalKM = currentKM + predictedKM;
+
+      document.getElementById("mileageResult").innerText =
+        `You can travel approx. ${predictedKM} KM more.\nExpected KM after usage: ${finalKM}`;
+    }
+  </script>
+</body>
+</html>
