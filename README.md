@@ -20,9 +20,13 @@ Files: `index.html` (the page you open on your phone) and `Code.gs` (the Google 
    Keep "Execute as: Me" and "Who has access: Anyone". This keeps your existing `/exec` URL,
    which is already in `index.html`.
 
-## 2. Frontend
-Host `index.html` anywhere that serves HTTPS (GitHub Pages or Netlify drop are the easiest);
-the phone camera and "add to home screen" need HTTPS. Open it, enter your PIN, and add it to your home screen.
+## 2. Frontend (GitHub Pages)
+GitHub Pages is configured to publish the root of the `ver-1.2` branch.
+After pushing changes to that branch, open https://sriramevs.github.io/Petrol-Tracer/ on your phone,
+enter your PIN, and add it to your home screen. The HTTPS URL is required for camera access.
+
+GitHub Pages hosts only the frontend; the backend remains the Google Apps Script web app above.
+Do not put API keys or other secrets in `index.html`.
 
 ## 3. Using it
 - Weekly at the pump: take a photo of the dashboard → odometer fills in → type the amount paid → Save.
