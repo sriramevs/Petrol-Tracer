@@ -1,0 +1,21 @@
+function doPost(e) {
+  var sheet = SpreadsheetApp.openById('1SUlHa099_p3BLn4NUvp0yyBKYSjkS65hbQLi25G-b1g').getSheetByName('Sheet1');
+
+  var currentKM = parseFloat(e.parameter.currentKM);
+  var petrolLitres = parseFloat(e.parameter.petrolLitres);
+  var mileagePerLitre = 40;
+
+  var predictedRange = petrolLitres * mileagePerLitre;
+  var overallKM = currentKM + predictedRange;
+
+  // Flexible date format: shows "April 24, 2025"
+  var date = Utilities.formatDate(new Date(), Session.getScriptTimeZone(), "MMMM d, yyyy");
+
+  sheet.appendRow([date, currentKM, petrolLitres, predictedRange, overallKM]);
+
+  return ContentService.createTextOutput("Logged successfully");
+}
+
+function doGet() {
+  return HtmlService.createHtmlOutputFromFile('index');
+}
